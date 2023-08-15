@@ -1,0 +1,32 @@
+{#
+    Search input.
+#}
+{%- macro SearchBar(
+    labelText = false,
+    placeholder = 'Search'
+) -%}
+    <div class="search-bar">
+        {% if labelText %}
+            <label for="search">{{ labelText }}</label>
+        {% endif %}
+        <input
+            type ="text"
+            id ="search-popup"
+            class ="search-bar__input js-search"
+            name ="search"
+            placeholder ={{ placeholder }}
+            required
+        />
+        <a href="#search-popup"
+           data-fancybox
+           data-content="Ouvrir la recherche"
+           data-fancybox-body-class="is-search-opened"
+           aria-haspopup="dialog"
+        >
+            <span aria-hidden= "hidden" class="fa fa-search"></span>
+        </a>
+        <div class="search__popup hidden">
+            {# SearchPopup() #}
+        </div>
+    </div>
+{%- endmacro -%}

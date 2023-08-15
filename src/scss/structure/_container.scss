@@ -1,0 +1,27 @@
+%container {
+  @extend %clear-fix;
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 0 40px;
+  width: 100%;
+
+  @include breakpoint(medium down) {
+    max-width: 1130px;
+  }
+  @include breakpoint(small down) {
+    padding: 0 20px;
+  }
+}
+
+%container-fluid {
+  max-width: 1920px;
+  padding: 0;
+}
+
+.container {
+  @extend %container;
+
+  &.is-fluid {
+    @extend %container-fluid;
+  }
+}

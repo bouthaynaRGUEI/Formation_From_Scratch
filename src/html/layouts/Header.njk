@@ -1,0 +1,73 @@
+{%- from 'components/search.njk' import SearchBar -%}
+
+{#
+    Header template
+#}
+{% set navbarItems = [
+    { title : 'News',
+      dropdown: [
+        { title: 'News1' },
+        { title: 'News2' },
+        { title: 'News3' },
+        { title: 'News3' }
+      ]
+    },
+    { title : 'Events'},
+    { title : 'Gallery'},
+    { title : 'About'},
+    { title : 'Contact'}
+] %}
+
+{% macro Navbar() %}
+    <nav class="main-nav" role="navigation">
+        <ul class="main-nav__list">
+        {% for item in navbarItems %}
+            {% if item.dropdown %}
+                <li class="main-nav__list-item show-dropdown">
+                    <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle nav-link" data-toggle="dropdown" href="#1" role="button">
+                        <span class="navbar-text-truncate">{{ item.title }}</span>
+                        <img src="/assets/icons/caret-bottom.svg" width="10px" height="10px"/>
+                    </a>
+                    <ul class="dropdown-menu">
+                        {% for val in item.dropdown %}
+                            <li>
+                                <a class="nav-link" href="{{ val.title}}.html">
+                                    {{ val.title }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ item.title | replace(" ", "- ") | lower }}.html">
+                        <span class="navbar-text-truncate">{{ item.title }}</span>
+                    </a>
+                </li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    </nav>
+{% endmacro %}
+
+{% macro Header() %}
+    <header class="header-wrapper" role="banner">
+        <div class="header__container container">
+            <div class="header js-fixed-element">
+                <div class="header__items">
+                    <div class="header__logo">
+                        <span class="logo__image">
+                            <img src="assets/images/training.svg" width="150" height="70" alt="formation.fr Home">
+                        </span>
+                    </div>
+                    <div class="header__search">
+                        {{ SearchBar() }}
+                    </div>
+                    <div class="header__navbar">
+                        {{ Navbar() }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endmacro %}
