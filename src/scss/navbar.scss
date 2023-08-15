@@ -1,27 +1,27 @@
 nav {
   margin: 50px 0;
-  background-color: #E64A19;
+  background-color: #e64a19;
 }
 
 nav ul {
-  padding: 0;
-  margin: 0;
   list-style: none;
+  margin: 0;
+  padding: 0;
   position: relative;
 }
 
 nav ul li {
-  display:inline-block;
-  background-color: #E64A19;
+  display: inline-block;
+  background-color: #e64a19;
 }
 
 nav a {
-  display:block;
-  padding:0 10px;
-  color:#FFF;
-  font-size:20px;
+  color: #fff;
+  display: block;
+  font-size: 20px;
   line-height: 60px;
-  text-decoration:none;
+  padding: 0 10px;
+  text-decoration: none;
 }
 
 nav a:hover {
@@ -37,25 +37,28 @@ nav ul ul {
 
 /* Display Dropdowns on Hover */
 nav ul li:hover > ul {
-  display:inherit;
+  display: inherit;
 }
 
 /* Fisrt Tier Dropdown */
 nav ul ul li {
-  width:170px;
-  float:none;
-  display:list-item;
+  display: list-item;
+  float: none;
   position: relative;
+  width: 170px;
 }
 
 /* Second, Third and more Tiers	*/
 nav ul ul ul li {
+  left: 170px;
   position: relative;
-  top:-60px;
-  left:170px;
+  top: -60px;
 }
 
-
 /* Change this in order to change the Dropdown symbol */
-li > a:after { content:  ' +'; }
-li > a:only-child:after { content: ''; }
+li > a:after {
+  content: ' +';
+}
+li > a:only-child:after {
+  content: '';
+}
